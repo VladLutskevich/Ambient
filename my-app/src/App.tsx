@@ -23,8 +23,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Main from "./pages/main/Main";
 import "./App.css";
 import SubMenu from "antd/lib/menu/SubMenu";
-import Cars from "./pages/main/Cars";
-import ErrorPage from "./pages/main/ErrorPage";
+import Cars from "./pages/cars/Cars";
+import ErrorPage from "./pages/error/ErrorPage";
+import BaseStations from "./pages/baseStations/BaseStations";
 
 const { Header, Sider, Footer, Content } = Layout;
 
@@ -40,7 +41,7 @@ const App = function () {
       <Layout>
         <Sider trigger={null} collapsible collapsed={isCollapsed} width={250}>
           <div className="logo">{isCollapsed ? "UA" : "Ambient"}</div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={["0"]}>
             <Menu.Item key="1111" icon={<HomeOutlined />}>
               <Link to="/">Главная</Link>
             </Menu.Item>
@@ -60,7 +61,7 @@ const App = function () {
               <Link to="/cars">Автомобили</Link>
             </Menu.Item>
             <Menu.Item key="6" icon={<DeploymentUnitOutlined />}>
-              Базовые станции
+              <Link to="/base-stations">Базовые станции</Link>
             </Menu.Item>
             <Menu.Item key="7" icon={<DashboardOutlined />}>
               Датчики
@@ -113,10 +114,6 @@ const App = function () {
               minHeight: "calc(100vh - 134px)",
             }}
           >
-            <Breadcrumb style={{ margin: "0 0 16px 16px" }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
             <div
               className="site-layout-background"
               style={{
@@ -126,6 +123,7 @@ const App = function () {
               <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/cars" element={<Cars />} />
+                <Route path="/base-stations" element={<BaseStations />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </div>
